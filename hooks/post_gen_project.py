@@ -7,6 +7,8 @@ SUCCESS = "\x1b[1;32m"
 INFO = "\x1b[1;33m"
 TERMINATOR = "\x1b[0m"
 
+module_name = "{{ cookiecutter.repo_name }}"
+
 
 def set_python_version():
     python_version = str(sys.version_info.major) + "." + str(sys.version_info.minor)
@@ -40,8 +42,12 @@ def main():
 
     install_dev_deps()
     print(SUCCESS + "Installed development dependencies" + TERMINATOR)
+    print(INFO + "To start your project, run: " + TERMINATOR)
+    print(INFO + f"    cd {module_name} && source .venv/bin/activate" + TERMINATOR)
+    print(INFO + f"    git init" + TERMINATOR)
+    print(INFO + f"    pre-commit install -t pre-commit" + TERMINATOR)
+    print(INFO + f"    pre-commit install -t pre-push" + TERMINATOR)
     time.sleep(0.5)
-
 
 if __name__ == "__main__":
     main()
