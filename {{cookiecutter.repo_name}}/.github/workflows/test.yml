@@ -1,10 +1,10 @@
 name: Test
 
-on: 
+on:
   pull_request: {}
   push:
-    branches: master
-    tags: "*"
+    branches: [main]
+    tags: ["*"]
 
 jobs:
   test:
@@ -17,16 +17,16 @@ jobs:
         with:
           python-version: {python_version}
 
-      - name: Install dependencies with pipenv
+      - name: Install dependencies
         run: |
-          pip install pipenv
-          pipenv install --deploy --dev
+          pip install --upgrade pip
+          pip install -r requirements.txt.dev
 
-      - run: pipenv run isort --recursive --diff .
-      - run: pipenv run black --check .
-      - run: pipenv run flake8
-      - run: pipenv run mypy
-      - run: pipenv run pytest --cov --cov-fail-under=100
+      - run: python3 -m isort --recursive --diff .
+      - run: python3 -m black --check .
+      - run: python3 -m flake8
+      - run: python3 -m mypy
+      - run: python3 -m pytest --cov --cov-fail-under=100
 
   docker-image:
     runs-on: ubuntu-latest

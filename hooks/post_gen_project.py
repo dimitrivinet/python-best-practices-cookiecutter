@@ -39,7 +39,7 @@ def main():
     time.sleep(0.5)
 
     install_dev_deps()
-    print(SUCCESS + "Install development dependencies" + TERMINATOR)
+    print(SUCCESS + "Installed development dependencies" + TERMINATOR)
     time.sleep(0.5)
 
 
