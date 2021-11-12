@@ -1,5 +1,11 @@
-import os
 import sys
+import venv
+import time
+import subprocess
+
+SUCCESS = "\x1b[1;32m"
+INFO = "\x1b[1;33m"
+TERMINATOR = "\x1b[0m"
 
 
 def set_python_version():
@@ -14,14 +20,27 @@ def set_python_version():
             f.write(contents)
 
 
-SUCCESS = "\x1b[1;32m"
-INFO = "\x1b[1;33m"
-TERMINATOR = "\x1b[0m"
+def create_virtualenv():
+    builder = venv.EnvBuilder(with_pip=True)
+    builder.create("./.venv")
+
+
+def install_dev_deps():
+    subprocess.call(["./.venv/bin/pip3", "install", "-r", "requirements.txt.dev"])
 
 
 def main():
     set_python_version()
     print(SUCCESS + "Project successfully initialized" + TERMINATOR)
+    time.sleep(0.5)
+
+    create_virtualenv()
+    print(SUCCESS + "Virtualenv created" + TERMINATOR)
+    time.sleep(0.5)
+
+    install_dev_deps()
+    print(SUCCESS + "Install development dependencies" + TERMINATOR)
+    time.sleep(0.5)
 
 
 if __name__ == "__main__":
