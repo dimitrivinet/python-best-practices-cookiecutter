@@ -21,27 +21,4 @@ Best practices [cookiecutter](https://github.com/audreyr/cookiecutter) template 
 pipx run cookiecutter gh:dimitrivinet/python-best-practices-cookiecutter
 ```
 
-### Enter project directory
-
-```bash
-cd <repo_name>
-```
-
-### Initialise git repo
-
-```bash
-git init
-```
-
-### Install dependencies
-
-```bash
-pipenv install --dev
-```
-
-### Setup pre-commit and pre-push hooks
-
-```bash
-pipenv run pre-commit install -t pre-commit
-pipenv run pre-commit install -t pre-push
-```
+And follow post install instructions.

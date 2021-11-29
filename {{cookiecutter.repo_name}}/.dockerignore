@@ -2,5 +2,5 @@
 **
 
 # ... except for dependencies and source
-!requirements.txr
+!requirements.txt
 !{{cookiecutter.repo_name}}
